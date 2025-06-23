@@ -48,13 +48,14 @@ class HomePageState extends State<HomePage> {
   void initPages() {
     _pages.clear();
     if (!bind.isIncomingOnly()) {
-      _pages.add(ConnectionPage(
-        appBarActions: [],
-      ));
+      // _pages.add(ConnectionPage(
+      //   appBarActions: [],
+      // ));
     }
     if (isAndroid && !bind.isOutgoingOnly()) {
       _chatPageTabIndex = _pages.length;
-      _pages.addAll([ChatPage(type: ChatPageType.mobileMain), ServerPage()]);
+      //_pages.addAll([ChatPage(type: ChatPageType.mobileMain), ServerPage()]);
+      _pages.add(ServerPage());
     }
     _pages.add(SettingsPage());
   }
@@ -150,7 +151,8 @@ class HomePageState extends State<HomePage> {
         ],
       );
     }
-    return Text(bind.mainGetAppNameSync());
+    //return Text(bind.mainGetAppNameSync());
+    return Text("MixctDesk");
   }
 }
 
@@ -234,7 +236,10 @@ class WebHomePage extends StatelessWidget {
       }
     }
     if (id != null) {
-      connect(context, id, isFileTransfer: isFileTransfer, isViewCamera: isViewCamera, password: password);
+      connect(context, id,
+          isFileTransfer: isFileTransfer,
+          isViewCamera: isViewCamera,
+          password: password);
     }
   }
 }
